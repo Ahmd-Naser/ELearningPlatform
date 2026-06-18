@@ -1,0 +1,9 @@
+﻿global using ELearningPlatform.Persistence;
+global using Microsoft.EntityFrameworkCore;
+global using ELearningPlatform.Contracts.Course;
+global using ELearningPlatform.Abstractions;
+global using ELearningPlatform.Services;
+global using Mapster;
+global using ELearningPlatform.Entities;
+global using ELearningPlatform.Errors;
+global using FluentValidation;
