@@ -35,4 +35,35 @@ public class CourseService(ApplicationDbContext context) : ICourseService
             ? Result.Success(course.Adapt<CourseResponse>())
             : Result.Failure<CourseResponse>(CourseErrors.NotFound);
     }
+
+    public async Task<Result<CourseResponse>> UpdateAsync(int id, UpdateCourseRequest request)
+    {
+        var course = await _context.Courses.FindAsync(id);
+
+        if (course is null)
+            return Result.Failure<CourseResponse>(CourseErrors.NotFound);
+
+        request.Adapt(course);
+
+        await _context.SaveChangesAsync();
+
+        return Result.Success(course.Adapt<CourseResponse>());
+
+    }
+
+    public async Task<Result> DeleteAsync(int id)
+    {
+
+        var course = await _context.Courses.FindAsync(id);
+
+        if (course is null)
+            return Result.Failure(CourseErrors.NotFound);
+
+        _context.Courses.Remove(course);
+
+        await _context.SaveChangesAsync();
+
+        return Result.Success();
+
+    }
 }

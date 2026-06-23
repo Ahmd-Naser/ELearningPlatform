@@ -9,4 +9,5 @@ public class Course
     public bool RequiresApproval { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public ICollection<Enrollment> Enrollments { get; set; } = [];
 }

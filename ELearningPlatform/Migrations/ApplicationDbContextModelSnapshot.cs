@@ -54,7 +54,7 @@ namespace ELearningPlatform.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("ELearningPlatform.Entities.Decision", b =>
@@ -85,7 +85,7 @@ namespace ELearningPlatform.Migrations
 
                     b.HasIndex("EnrollmentId");
 
-                    b.ToTable("Decisions");
+                    b.ToTable("Decisions", (string)null);
                 });
 
             modelBuilder.Entity("ELearningPlatform.Entities.Enrollment", b =>
@@ -115,7 +115,7 @@ namespace ELearningPlatform.Migrations
                     b.HasIndex("LearnerId", "CourseId")
                         .IsUnique();
 
-                    b.ToTable("Enrollments");
+                    b.ToTable("Enrollments", (string)null);
                 });
 
             modelBuilder.Entity("ELearningPlatform.Entities.Learner", b =>
@@ -151,7 +151,7 @@ namespace ELearningPlatform.Migrations
                     b.HasIndex("NationalId")
                         .IsUnique();
 
-                    b.ToTable("Learners");
+                    b.ToTable("Learners", (string)null);
                 });
 
             modelBuilder.Entity("ELearningPlatform.Entities.Decision", b =>

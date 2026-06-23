@@ -36,14 +36,26 @@ public class CoursesController(ICourseService courseService) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCourse()
+
+    public async Task<IActionResult> UpdateCourse([FromRoute] int id, [FromBody] UpdateCourseRequest request)
     {
-        return Ok();
+
+        var result = await _courseService.UpdateAsync(id, request);
+
+        return result.IsSuccess
+            ? Ok(result.Value)
+            : result.ToProblem();
+
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCourse()
+
+    public async Task<IActionResult> DeleteCourse([FromRoute] int id)
     {
-        return Ok();
+        var result = await _courseService.DeleteAsync(id);
+
+        return result.IsSuccess
+            ? NoContent()
+            : result.ToProblem();
     }
 }
