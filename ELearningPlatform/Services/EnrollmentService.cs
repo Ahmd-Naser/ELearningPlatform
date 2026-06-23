@@ -48,7 +48,7 @@ public class EnrollmentService(ApplicationDbContext context) : IEnrollmentServic
             return Result.Failure(EnrollmentErrors.NotFound);
         if (enrollment.Status != EnrollmentStatuses.PendingApproval)
             return Result.Failure(EnrollmentErrors.InvalidStatus);
-        enrollment.Status = request.Decision == "Approve" ? EnrollmentStatuses.Approved : EnrollmentStatuses.Rejected;
+        enrollment.Status = request.Decision == "Approved" ? EnrollmentStatuses.Approved : EnrollmentStatuses.Rejected;
 
         await _context.SaveChangesAsync();
         return Result.Success();
